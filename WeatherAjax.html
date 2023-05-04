@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Current weather</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Weather parameter</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody id="weatherTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button id="start">Start</button>
+    <script>
+
+        $("#start").on("click", function () {
+            getWeather();
+        });
+
+        let delayMilliseconds = 1000;
+
+        function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastItem = false) {
+            $("#weatherTableBody").append($(`<tr style="display:none">
+                        <th scope="row" style="text-align:left">${weatherParameterName}</th>
+                        <td>${weatherParameterValue}</td>
+                    </tr> `));
+
+            if (isLastItem) {
+                $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000, function () {
+                    $("#start").prop('disabled', true);
+                });
+            }
+            else {
+                $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000);
+            }
+            delayMilliseconds += 1000;
+        }
+
+        function getWeather() {
+
+            $.ajax({
+                type: "GET",
+                url: "https://api.openweathermap.org/data/2.5/weather?lat=48.8588897&lon=2.3200410217200766&units=metric&lang=pl&appid={API_KEY_GOES_HERE}",
+                success: function (apiResponse) {
+                    console.log(apiResponse);
+                    $("#name").append($(`<p> ${apiResponse.name} </p>`));
+
+                    insertPopulatedRow("temperature", apiResponse.main.temp);
+
+                    insertPopulatedRow("wind gust", apiResponse.wind.gust);
+                    insertPopulatedRow("wind speed", apiResponse.wind.speed);
+                    insertPopulatedRow("perceived temperature", apiResponse.main.feels_like);
+
+                    insertPopulatedRow("country code", apiResponse.sys.country);
+                    insertPopulatedRow("id", apiResponse.sys.id);
+                    insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
+
+                    //Pass an additional parameter to indicate this is the last row
+                    insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
