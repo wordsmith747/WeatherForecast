@@ -1,6 +1,10 @@
-$("#start").on("click", function () {
+
+function registerButtonHandler(){
+
+    $("#start").on("click", function () {
     getWeather();
 });
+}
 
 function getWeather() {
 
