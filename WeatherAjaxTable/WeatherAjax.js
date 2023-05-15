@@ -28,6 +28,7 @@ function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastI
         $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000, function () {
             //Jquery finds the button and disables it.
             $("#start").prop('disabled', true);
+            document.getElementById("weatherIcon").style.visibility = "visible";
         });
 
 
@@ -41,6 +42,12 @@ function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastI
     delayMilliseconds += 1000;
 }
 
+function retriveWeatherIcon(weatherIconCode) {
+    let iconcode = weatherIconCode;
+
+    let iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
+    $('#weatherIcon').attr('src', iconurl);
+}
 
 
 //Send GET request to a weather API.
