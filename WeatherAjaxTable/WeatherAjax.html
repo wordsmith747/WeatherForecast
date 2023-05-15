@@ -21,11 +21,13 @@
             <table class="table">
                 <thead>
                     <tr>
+                    <tr class="table-primary">
                         <th scope="col">Weather parameter</th>
                         <th scope="col">Value</th>
                     </tr>
                 </thead>
                 <tbody id="weatherTableBody">
+                <tbody class="table-success" id="weatherTableBody">
                 </tbody>
             </table>
         </div>
@@ -33,6 +35,8 @@
 
     <button id="start">Start</button>
     
+    <div id="wIcon"><img id="weatherIcon" src="" alt="Weather icon"></div>
+
     <!--The click on the "Start" button triggers the Jquery function which executes the main getWeather function-->
 </body>
 
