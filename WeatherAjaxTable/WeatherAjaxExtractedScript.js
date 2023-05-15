@@ -42,7 +42,7 @@
                     insertPopulatedRow("id", apiResponse.sys.id);
                     insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
 
-                    //Pass an additional parameter to indicate this is the last row
+                    //Pass an additional parameter to indicate this is the last row.
                     insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
                 }
             });
