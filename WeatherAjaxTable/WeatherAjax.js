@@ -1,15 +1,8 @@
-function registerButtonHandler(){
 // Definition of the registerButtonHandler function which calls getWeather function triggered by the "Start" button.
 
 
     $("#start").on("click", function () {
-    getWeather();
-});
 }
-
-// $("#start").on("click", function () {
-//     getWeather();
-// });
 
 let delayMilliseconds = 1000;
 
@@ -59,19 +52,16 @@ function getWeather() {
         url: "https://api.openweathermap.org/data/2.5/weather?lat=48.8588897&lon=2.3200410217200766&units=metric&lang=pl&appid=13c1eb939d118a04132999b824983237",
         success: function (apiResponse) {
             console.log(apiResponse);
-            $("#name").append($(`<p> ${apiResponse.name} </p>`));
 
             //Retrieve weather parameters from the API response and display them next to their respective descriptive names.
 
             insertPopulatedRow("wind gust", apiResponse.wind.gust);
             insertPopulatedRow("wind speed", apiResponse.wind.speed);
             insertPopulatedRow("perceived temperature", apiResponse.main.feels_like);
-
             insertPopulatedRow("country code", apiResponse.sys.country);
             insertPopulatedRow("id", apiResponse.sys.id);
             insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
 
-            //Pass an additional parameter to indicate this is the last row
             //Pass an additional parameter to indicate this is the last row to be inserted.
             insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
             //retriveWeatherIcon(apiResponse.weather[0].icon);
