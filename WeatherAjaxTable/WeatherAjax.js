@@ -1,4 +1,6 @@
 function registerButtonHandler(){
+// Definition of the registerButtonHandler function which calls getWeather function triggered by the "Start" button.
+
 
     $("#start").on("click", function () {
     getWeather();
@@ -11,16 +13,27 @@ function registerButtonHandler(){
 
 let delayMilliseconds = 1000;
 
+// Definition of the insertPopulatedRow function.
+// It creates the table with each row containing the parameter name and the paramater value.
+// The last parameter is a Boolean which checks whether the row is the last one.
+
 function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastItem = false) {
     $("#weatherTableBody").append($(`<tr style="display:none">
                 <th scope="row" style="text-align:left">${weatherParameterName}</th>
                 <td>${weatherParameterValue}</td>
             </tr> `));
 
+    //If statement checking whether the inserted row is the last item in the collection.
     if (isLastItem) {
         $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000, function () {
+            //Jquery finds the button and disables it.
             $("#start").prop('disabled', true);
         });
+
+
+
+
+
     }
     else {
         $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000);
@@ -28,6 +41,10 @@ function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastI
     delayMilliseconds += 1000;
 }
 
+
+
+//Send GET request to a weather API.
+//If the request is successful, log the parameters in the console.
 function getWeather() {
 
     $.ajax({
@@ -37,7 +54,7 @@ function getWeather() {
             console.log(apiResponse);
             $("#name").append($(`<p> ${apiResponse.name} </p>`));
 
-            insertPopulatedRow("temperature", apiResponse.main.temp);
+            //Retrieve weather parameters from the API response and display them next to their respective descriptive names.
 
             insertPopulatedRow("wind gust", apiResponse.wind.gust);
             insertPopulatedRow("wind speed", apiResponse.wind.speed);
@@ -48,7 +65,15 @@ function getWeather() {
             insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
 
             //Pass an additional parameter to indicate this is the last row
+            //Pass an additional parameter to indicate this is the last row to be inserted.
             insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
+            //retriveWeatherIcon(apiResponse.weather[0].icon);
         }
+
     });
+
 }
+
+
+
+
