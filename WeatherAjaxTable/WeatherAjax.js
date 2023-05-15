@@ -72,8 +72,8 @@ function getWeather() {
             //Pass an additional parameter to indicate this is the last row to be inserted.
             insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
 
-            //retriveWeatherIcon(apiResponse.weather[0].icon);
-            retriveWeatherIcon("10" + "d");
+            retriveWeatherIcon(apiResponse.weather[0].icon);
+            //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
         }
 
