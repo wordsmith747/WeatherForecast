@@ -1,7 +1,10 @@
 // Definition of the registerButtonHandler function which calls getWeather function triggered by the "Start" button.
 
+function registerButtonHandler() {
 
     $("#start").on("click", function () {
+        getWeather();
+    });
 }
 
 let delayMilliseconds = 1000;
@@ -55,6 +58,7 @@ function getWeather() {
 
             //Retrieve weather parameters from the API response and display them next to their respective descriptive names.
 
+            insertPopulatedRow("temperature", apiResponse.main.temp);
             insertPopulatedRow("wind gust", apiResponse.wind.gust);
             insertPopulatedRow("wind speed", apiResponse.wind.speed);
             insertPopulatedRow("perceived temperature", apiResponse.main.feels_like);
@@ -62,9 +66,15 @@ function getWeather() {
             insertPopulatedRow("id", apiResponse.sys.id);
             insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
 
+            insertPopulatedRow("icon", apiResponse.weather[0].icon);
+
+
             //Pass an additional parameter to indicate this is the last row to be inserted.
             insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
+
             //retriveWeatherIcon(apiResponse.weather[0].icon);
+            retriveWeatherIcon("10" + "d");
+            //document.getElementById("weatherIcon").style.visibility = "visible";
         }
 
     });
