@@ -17,22 +17,37 @@
 
 <body onload="registerButtonHandler()">
     <div class="row">
-        <div class="col-6">
-            <table class="table">
-                <thead>
-                    <tr class="table-primary">
-                        <th scope="col">Weather parameter</th>
-                        <th scope="col">Value</th>
-                    </tr>
-                </thead>
-                <tbody class="table-success" id="weatherTableBody">
-                </tbody>
-            </table>
-        </div>
+        <div class="col-6 table-responsive">
 
+        </div>
+        <div class="col-6 mx-auto p-2" id="wIcon">
+        </div>
+    </div>
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Weather parameter</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-success" id="weatherTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body d-flex align-items-center">
+                <img id="weatherIcon" src="" class="rounded mx-auto d-block" alt="Weather icon">
+            </div>
+        </div>
     </div>
 
-    <div id="wIcon"><img id="weatherIcon" src="" alt="Weather icon"></div>
+    <!--<div id="wIcon"></div>-->
 
     <!--The click on the "Start" button triggers the Jquery function which executes the main getWeather function-->
     <button type="button" class="btn btn-success" id="start">Start</button>
