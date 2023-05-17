@@ -41,7 +41,7 @@ function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastI
 function retriveWeatherIcon(weatherIconCode) {
     let iconcode = weatherIconCode;
 
-    let iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
+    let iconurl = "https://openweathermap.org/img/wn/" + iconcode + "@2x.png";
     $('#weatherIcon').attr('src', iconurl);
 }
 
