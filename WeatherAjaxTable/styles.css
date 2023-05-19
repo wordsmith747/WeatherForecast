@@ -9,4 +9,13 @@
 
 .card {
    width: 18rem;
- }
+}
+
+#temperature {
+   display: none;
+   text-decoration: solid;
+   color:rgb(98, 226, 43);
+   font-size: xxx-large;
+}
+
+/*visibility: hidden;*/

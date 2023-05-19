@@ -4,6 +4,7 @@ function registerButtonHandler() {
 
     $("#start").on("click", function () {
         getWeather();
+
     });
 }
 
@@ -25,10 +26,8 @@ function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastI
             //Jquery finds the button and disables it.
             $("#start").prop('disabled', true);
             document.getElementById("weatherIcon").style.visibility = "visible";
+
         });
-
-
-
 
 
     }
@@ -45,6 +44,13 @@ function retriveWeatherIcon(weatherIconCode) {
     $('#weatherIcon').attr('src', iconurl);
 }
 
+function displayTemperature(locationTemperature) {
+    let temperatureRounded= Math.round(locationTemperature);
+    $("#temperature").append(`${temperatureRounded}°C`);
+   // document.getElementById("temperature").style.visibility = "visible";
+   // $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000);
+   $("#temperature").delay(delayMilliseconds+2000).fadeIn(2000);
+}
 
 //Send GET request to a weather API.
 //If the request is successful, log the parameters in the console.
@@ -73,13 +79,17 @@ function getWeather() {
             insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
 
             retriveWeatherIcon(apiResponse.weather[0].icon);
+            displayTemperature(apiResponse.main.temp);
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
+
         }
 
     });
 
+
 }
+
 
 
 
