@@ -45,11 +45,29 @@ function retriveWeatherIcon(weatherIconCode) {
 }
 
 function displayTemperature(locationTemperature) {
-    let temperatureRounded= Math.round(locationTemperature);
+    let temperatureRounded = Math.round(locationTemperature);
     $("#temperature").append(`${temperatureRounded}°C`);
-   // document.getElementById("temperature").style.visibility = "visible";
-   // $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000);
-   $("#temperature").delay(delayMilliseconds+2000).fadeIn(2000);
+    // document.getElementById("temperature").style.visibility = "visible";
+    // $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000);
+    $("#temperature").delay(delayMilliseconds + 2000).fadeIn(2000);
+}
+// Definition of the TimeConverter function.
+// The function converts the time expressed in seconds into a user friendly format.
+//The function uses two approaches to convert the time.
+
+function TimeConverter(unixTimeStamp) {
+    let date = new Date(unixTimeStamp * 1000);
+    let hours = "0" + date.getHours();
+    let minutes = "0" + date.getMinutes();
+    let seconds = "0" + date.getSeconds();
+
+    let formattedTime = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+    //Logging in the time converted by means of concatination and extraction of the two last digits of the strings.
+    console.log(formattedTime);
+
+    //Logging in the time converted with the built-in function.
+    console.log(date.toLocaleTimeString());
+    return formattedTime;
 }
 
 //Send GET request to a weather API.
@@ -80,6 +98,10 @@ function getWeather() {
 
             retriveWeatherIcon(apiResponse.weather[0].icon);
             displayTemperature(apiResponse.main.temp);
+            //Introducing the local variable that takes the value of the TimeConverter function after it has executed.
+            let formattedSunriseTime = TimeConverter(apiResponse.sys.sunrise);
+            insertPopulatedRow("sunrise", formattedSunriseTime);
+
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
 
