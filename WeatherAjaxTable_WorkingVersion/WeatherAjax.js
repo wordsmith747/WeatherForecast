@@ -61,7 +61,7 @@ function TimeConverter(unixTimeStamp) {
     let minutes = "0" + date.getMinutes();
     let seconds = "0" + date.getSeconds();
 
-    let formattedTime = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+    let formattedTime = hours.substr(-2) + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
     //Logging in the time converted by means of concatination and extraction of the two last digits of the strings.
     console.log(formattedTime);
 
@@ -87,20 +87,23 @@ function getWeather() {
             insertPopulatedRow("wind speed", apiResponse.wind.speed);
             insertPopulatedRow("perceived temperature", apiResponse.main.feels_like);
             insertPopulatedRow("country code", apiResponse.sys.country);
-            insertPopulatedRow("id", apiResponse.sys.id);
-            insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
-
-            insertPopulatedRow("icon", apiResponse.weather[0].icon);
-
-
+            // insertPopulatedRow("id", apiResponse.sys.id);
+            // insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
+            //  insertPopulatedRow("icon", apiResponse.weather[0].icon);
             //Pass an additional parameter to indicate this is the last row to be inserted.
-            insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
+
+            let formattedSunriseTime = TimeConverter(apiResponse.sys.sunrise);
+            insertPopulatedRow("sunrise", formattedSunriseTime);
+
+           // insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
+
+            let formattedSunsetTime = TimeConverter(apiResponse.sys.sunset)
+            insertPopulatedRow("sunset", formattedSunsetTime, true);
 
             retriveWeatherIcon(apiResponse.weather[0].icon);
             displayTemperature(apiResponse.main.temp);
             //Introducing the local variable that takes the value of the TimeConverter function after it has executed.
-            let formattedSunriseTime = TimeConverter(apiResponse.sys.sunrise);
-            insertPopulatedRow("sunrise", formattedSunriseTime);
+
 
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
