@@ -82,23 +82,25 @@ function getWeather() {
 
             //Retrieve weather parameters from the API response and display them next to their respective descriptive names.
 
-            insertPopulatedRow("temperature", apiResponse.main.temp);
-            insertPopulatedRow("wind gust", apiResponse.wind.gust);
-            insertPopulatedRow("wind speed", apiResponse.wind.speed);
-            insertPopulatedRow("perceived temperature", apiResponse.main.feels_like);
-            insertPopulatedRow("country code", apiResponse.sys.country);
+            insertPopulatedRow("Temperature", apiResponse.main.temp);
+            //insertPopulatedRow("wind gust", apiResponse.wind.gust);
+            insertPopulatedRow("Perceived temperature", apiResponse.main.feels_like);
+            insertPopulatedRow("Wind speed", apiResponse.wind.speed);
+
+            insertPopulatedRow("Country", apiResponse.sys.country);
+            insertPopulatedRow("Location", apiResponse.name);
             // insertPopulatedRow("id", apiResponse.sys.id);
             // insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
             //  insertPopulatedRow("icon", apiResponse.weather[0].icon);
             //Pass an additional parameter to indicate this is the last row to be inserted.
 
             let formattedSunriseTime = TimeConverter(apiResponse.sys.sunrise);
-            insertPopulatedRow("sunrise", formattedSunriseTime);
+            insertPopulatedRow("Sunrise", formattedSunriseTime);
 
-           // insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
+            // insertPopulatedRow("sunset", apiResponse.sys.sunset, true);
 
             let formattedSunsetTime = TimeConverter(apiResponse.sys.sunset)
-            insertPopulatedRow("sunset", formattedSunsetTime, true);
+            insertPopulatedRow("Sunset", formattedSunsetTime, true);
 
             retriveWeatherIcon(apiResponse.weather[0].icon);
             displayTemperature(apiResponse.main.temp);
