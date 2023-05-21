@@ -17,3 +17,7 @@
 
 
 ![Weather_Chart_C](https://user-images.githubusercontent.com/89709407/236700458-5de5355f-6bd8-46e3-b88f-b8b00ea2d903.png)
+
+## Future features
+- A dropdown list with the city names to retrive the weather parameters from.
+- A seperate API call to retrieve the weather parameters based on input city.
