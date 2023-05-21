@@ -10,7 +10,7 @@
 
 ![Weather_Table_C](https://user-images.githubusercontent.com/89709407/236700754-4753f7fa-b479-4a8b-b3e5-a760958c6e0f.png)
 
-![Weather_Table_C]("Sample images/Weather_Table_Cards.png")
+![Weather_Table_C](sample-images/Weather_Table_Cards.png)
 
 
 
