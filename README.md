@@ -7,12 +7,10 @@
 ## WeatherAjax.js
 - The WeatherAjax.js retrives weather parameters such as the temperature and the wind speed in the given city and populates a table with those values to be displayed after clicking the start button.
 
-
 ![Weather_Table_C](https://user-images.githubusercontent.com/89709407/236700754-4753f7fa-b479-4a8b-b3e5-a760958c6e0f.png)
 
+## Updated layout
 ![Weather_Table_C](sample-images/Weather_Table_Cards.png)
-
-
 
 ## WeatherAjaxForecast.js
 
