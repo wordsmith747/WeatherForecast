@@ -6,7 +6,19 @@ function registerButtonHandler() {
         getWeather();
 
     });
+
+    $("#submit").on("click", function () {
+        getCityName();
+
+    });
+
 }
+
+
+// function cityLookUp(){
+
+
+// }
 
 let delayMilliseconds = 1000;
 
@@ -16,9 +28,9 @@ let delayMilliseconds = 1000;
 
 function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastItem = false) {
     $("#weatherTableBody").append($(`<tr style="display:none">
-                <th scope="row" style="text-align:left">${weatherParameterName}</th>
-                <td>${weatherParameterValue}</td>
-            </tr> `));
+    <th scope="row" style="text-align:left">${weatherParameterName}</th>
+    <td>${weatherParameterValue}</td>
+    </tr> `));
 
     //If statement checking whether the inserted row is the last item in the collection.
     if (isLastItem) {
@@ -70,6 +82,20 @@ function TimeConverter(unixTimeStamp) {
     return formattedTime;
 }
 
+function displayLocation(locationName, countryCode, state, latitude, longitude) {
+    $("#locationContainer").append($(`
+<div class="col">
+    <div class="card h-100">
+        <div class="card-body">
+        <h5 class="card-title"><strong>${locationName}</strong></h5>
+        <p class="card-text">${countryCode} ${state} ${latitude} ${longitude}</p>
+        <a href="#" class="btn btn-primary">Pick the location.</a>
+      </div>
+    </div>
+</div>
+`));
+}
+
 //Send GET request to a weather API.
 //If the request is successful, log the parameters in the console.
 function getWeather() {
@@ -89,6 +115,8 @@ function getWeather() {
 
             insertPopulatedRow("Country", apiResponse.sys.country);
             insertPopulatedRow("Location", apiResponse.name);
+            insertPopulatedRow("Latitude", apiResponse.coord.lat + "°");
+            insertPopulatedRow("Longitude", apiResponse.coord.lon + "°")
             // insertPopulatedRow("id", apiResponse.sys.id);
             // insertPopulatedRow("sunrise", apiResponse.sys.sunrise);
             //  insertPopulatedRow("icon", apiResponse.weather[0].icon);
@@ -109,15 +137,38 @@ function getWeather() {
 
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
-
         }
-
     });
-
 
 }
 
 
 
+function getCityName() {
 
+    let userInputText = $("#locationInput").val();
+    console.log(userInputText);
+
+    $.ajax({
+        type: "GET",
+        url: `http://api.openweathermap.org/geo/1.0/direct?q=${userInputText}&limit=5&appid=13c1eb939d118a04132999b824983237`,
+        success: function (apiResponseCityLookUp) {
+            console.log(apiResponseCityLookUp);
+
+            $("#locationContainer").empty();
+
+            for (let index = 0; index < apiResponseCityLookUp.length; index++) {
+
+                displayLocation(apiResponseCityLookUp[index].name,
+                    apiResponseCityLookUp[index].country,
+                    apiResponseCityLookUp[index].state,
+                    apiResponseCityLookUp[index].lat,
+                    apiResponseCityLookUp[index].lon);
+
+            }
+
+        }
+    });
+
+}
 
