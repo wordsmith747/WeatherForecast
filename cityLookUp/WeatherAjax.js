@@ -1,4 +1,5 @@
-// Definition of the registerButtonHandler function which calls getWeather function triggered by the "Start" button.
+// Definition of the registerButtonHandler function which calls getWeather function triggered by the "start" button.
+// Definition of JQuery function which calls getCityName function triggered by the "sumbit" button.
 
 function registerButtonHandler() {
 
@@ -14,11 +15,6 @@ function registerButtonHandler() {
 
 }
 
-
-// function cityLookUp(){
-
-
-// }
 
 let delayMilliseconds = 1000;
 
@@ -82,7 +78,10 @@ function TimeConverter(unixTimeStamp) {
     return formattedTime;
 }
 
+// Definiton of the displayLocation function.
+// The function accepts 5 arguments which will be embedded in a card.
 function displayLocation(locationName, countryCode, state, latitude, longitude) {
+    //JQuery function selects the element with the given id and appends a card to it.
     $("#locationContainer").append($(`
 <div class="col">
     <div class="card h-100">
@@ -145,18 +144,21 @@ function getWeather() {
 
 
 function getCityName() {
-
+    // userInputText retrives the value typed in by the user.
     let userInputText = $("#locationInput").val();
     console.log(userInputText);
 
+
+    // Ajax function that calls an API with the city name provided by the user.
     $.ajax({
         type: "GET",
         url: `http://api.openweathermap.org/geo/1.0/direct?q=${userInputText}&limit=5&appid=13c1eb939d118a04132999b824983237`,
         success: function (apiResponseCityLookUp) {
             console.log(apiResponseCityLookUp);
 
+            //Jquery function that clears the data of the previous API call.
             $("#locationContainer").empty();
-
+            //For loop displaying the paramaters based on the city names array.
             for (let index = 0; index < apiResponseCityLookUp.length; index++) {
 
                 displayLocation(apiResponseCityLookUp[index].name,
