@@ -160,12 +160,15 @@ function getCityName() {
 
             $("#locationContainer").hide();
 
+            //Jquery function that flushes the error message.
+            $("#noLocationsFoundError").empty();
+            
             if (apiResponseCityLookUp.length === 0) {
 
-                $("#noLocationsFoundError").empty();
+             
                 $("#noLocationsFoundError").append($(`
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 text-bg-warning">
                         <div class="card-body">
                         <h5 class="card-title">The name doesn't exist in our database</h5>
                         <p class="card-text">"No locations found. Please have another go!"</p>
@@ -187,8 +190,7 @@ function getCityName() {
                 $("#locationContainer").empty();
                 //Jquery that applies some animation to the API response.
                 $("#locationContainer").delay(100).fadeIn(2000);
-                //Jquery function that flushes the error message.
-                $("#noLocationsFoundError").empty();
+
                 //For loop displaying the paramaters based on the city names array.
                 for (let index = 0; index < apiResponseCityLookUp.length; index++) {
 
