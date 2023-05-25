@@ -22,3 +22,4 @@
 ## Future features
 - A dropdown list with the city names to retrive the weather parameters from.
 - A seperate API call to retrieve the weather parameters based on input city.
+- A functionality that enables the user to retrieve the weather parameter table based on city selected from the API response array.
