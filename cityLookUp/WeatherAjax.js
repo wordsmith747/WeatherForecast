@@ -156,24 +156,51 @@ function getCityName() {
         type: "GET",
         url: `http://api.openweathermap.org/geo/1.0/direct?q=${userInputText}&limit=5&appid=13c1eb939d118a04132999b824983237`,
         success: function (apiResponseCityLookUp) {
-            console.log(apiResponseCityLookUp);
-            //  Selects the element to switch its visibility off.
+
+
             $("#locationContainer").hide();
 
-            //Jquery function that clears the data of the previous API call.
-            $("#locationContainer").empty();
-            $("#locationContainer").delay(100).fadeIn(2000);
-            //For loop displaying the paramaters based on the city names array.
-            for (let index = 0; index < apiResponseCityLookUp.length; index++) {
+            if (apiResponseCityLookUp.length === 0) {
 
-                displayLocation(apiResponseCityLookUp[index].name,
-                    apiResponseCityLookUp[index].country,
-                    apiResponseCityLookUp[index].state,
-                    apiResponseCityLookUp[index].lat,
-                    apiResponseCityLookUp[index].lon);
+                $("#noLocationsFoundError").empty();
+                $("#noLocationsFoundError").append($(`
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                        <h5 class="card-title">The name doesn't exist in our database</h5>
+                        <p class="card-text">"No locations found. Please have another go!"</p>
+                      </div>
+                    </div>
+                </div>
+                `));
 
             }
 
+            // At least one city is returned.
+            else {
+                // $("#noLocationsFoundError").prepend();
+                console.log(apiResponseCityLookUp.length);
+
+                //  Selects the element to switch its visibility off.
+
+                //Jquery function that clears the data of the previous API call.
+                $("#locationContainer").empty();
+                //Jquery that applies some animation to the API response.
+                $("#locationContainer").delay(100).fadeIn(2000);
+                //Jquery function that flushes the error message.
+                $("#noLocationsFoundError").empty();
+                //For loop displaying the paramaters based on the city names array.
+                for (let index = 0; index < apiResponseCityLookUp.length; index++) {
+
+                    displayLocation(apiResponseCityLookUp[index].name,
+                        apiResponseCityLookUp[index].country,
+                        apiResponseCityLookUp[index].state,
+                        apiResponseCityLookUp[index].lat,
+                        apiResponseCityLookUp[index].lon);
+
+                }
+
+            }
         }
     });
 
