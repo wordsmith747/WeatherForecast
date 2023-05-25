@@ -92,9 +92,10 @@ function displayLocation(locationName, countryCode, state, latitude, longitude) 
       </div>
     </div>
 </div>
-`));
+`))
+        ;
 
-$("#locationContainer").delay(5000).fadeIn(2000);
+    // $("#locationContainer").delay(5000).fadeIn(2000);
 }
 
 //Send GET request to a weather API.
@@ -156,9 +157,12 @@ function getCityName() {
         url: `http://api.openweathermap.org/geo/1.0/direct?q=${userInputText}&limit=5&appid=13c1eb939d118a04132999b824983237`,
         success: function (apiResponseCityLookUp) {
             console.log(apiResponseCityLookUp);
+            //  Selects the element to switch its visibility off.
+            $("#locationContainer").hide();
 
             //Jquery function that clears the data of the previous API call.
             $("#locationContainer").empty();
+            $("#locationContainer").delay(100).fadeIn(2000);
             //For loop displaying the paramaters based on the city names array.
             for (let index = 0; index < apiResponseCityLookUp.length; index++) {
 
@@ -169,7 +173,7 @@ function getCityName() {
                     apiResponseCityLookUp[index].lon);
 
             }
-            $("#locationContainer").delay(5000).fadeIn(2000);
+
         }
     });
 
