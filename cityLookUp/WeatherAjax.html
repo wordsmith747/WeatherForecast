@@ -20,8 +20,8 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Location</span>
-                <input type="text" id="locationInput" class="form-control" placeholder="City name"
-                    aria-label="Locations" aria-describedby="basic-addon1">
+                <input type="text" id="locationInput" class="form-control" placeholder="City name" value="London"
+                    aria-label="Locations" aria-describedby="basic-addon1"></input>
             </div>
 
 
@@ -44,8 +44,13 @@
         <div class="col">&nbsp;</div>
     </div>
 
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="noLocationsFoundError">
+        <div class="col"></div>
+    </div>
+
     <div class="row">
-        <!-- <div class="card">
+        <div class="card">
             <div class="card-body">
                 <table class="table">
                     <thead>
@@ -58,7 +63,7 @@
                     </tbody>
                 </table>
             </div>
-        </div> -->
+        </div>
         <div class="card">
             <div class="card-body d-flex align-items-center">
                 <img id="weatherIcon" src="" class="rounded mx-auto d-block" alt="Weather icon">
