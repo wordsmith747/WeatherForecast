@@ -87,12 +87,14 @@ function displayLocation(locationName, countryCode, state, latitude, longitude) 
     <div class="card h-100">
         <div class="card-body">
         <h5 class="card-title"><strong>${locationName}</strong></h5>
-        <p class="card-text">${countryCode} ${state} ${latitude} ${longitude}</p>
+        <p class="card-text">${countryCode} ${state}</br>${latitude}°</br>${longitude}°</p>
         <a href="#" class="btn btn-primary">Pick the location.</a>
       </div>
     </div>
 </div>
 `));
+
+$("#locationContainer").delay(5000).fadeIn(2000);
 }
 
 //Send GET request to a weather API.
@@ -133,7 +135,6 @@ function getWeather() {
             displayTemperature(apiResponse.main.temp);
             //Introducing the local variable that takes the value of the TimeConverter function after it has executed.
 
-
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
         }
@@ -168,7 +169,7 @@ function getCityName() {
                     apiResponseCityLookUp[index].lon);
 
             }
-
+            $("#locationContainer").delay(5000).fadeIn(2000);
         }
     });
 
