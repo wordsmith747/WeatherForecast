@@ -165,7 +165,7 @@ function getCityName() {
                 $("#noLocationsFoundError").empty();
                 $("#noLocationsFoundError").append($(`
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 text-bg-warning">
                         <div class="card-body">
                         <h5 class="card-title">The name doesn't exist in our database</h5>
                         <p class="card-text">"No locations found. Please have another go!"</p>
