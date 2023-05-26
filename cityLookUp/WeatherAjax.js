@@ -32,7 +32,7 @@ function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastI
     if (isLastItem) {
         $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000, function () {
             //Jquery finds the button and disables it.
-            $("#start").prop('disabled', true);
+            // $("#start").prop('disabled', true);
             document.getElementById("weatherIcon").style.visibility = "visible";
 
         });
@@ -96,7 +96,7 @@ function resetWeatherData() {
 function displayLocation(locationName, countryCode, state, latitude, longitude) {
     //JQuery function selects the element with the given id and appends a card to it.
 
-    // Adding an onclick attribute with a functin call getWeather and passing two variables as arguments to display the specific parameters.
+    // Adding an onclick attribute with a function call getWeather and passing two variables as arguments to display the specific parameters.
     $("#locationContainer").append($(`
 <div class="col">
     <div class="card h-100">
@@ -104,12 +104,11 @@ function displayLocation(locationName, countryCode, state, latitude, longitude) 
         <h5 class="card-title"><strong>${locationName}</strong></h5>
         <p class="card-text">${state} ${countryCode}<br/></p>
             <a onclick="getWeather(${latitude},${longitude});" href="#" class="btn btn-primary">Select ${locationName}, ${countryCode}</a>
+            <img src="flags/Medium/${countryCode}.png"/>
       </div>
     </div>
 </div>
-`))
-        ;
-
+`));
     // $("#locationContainer").delay(5000).fadeIn(2000);
 }
 
@@ -217,7 +216,6 @@ function getCityName() {
                         apiResponseCityLookUp[index].lon);
 
                 }
-
             }
         }
     });
