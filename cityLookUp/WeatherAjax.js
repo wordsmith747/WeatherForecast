@@ -77,18 +77,32 @@ function TimeConverter(unixTimeStamp) {
     console.log(date.toLocaleTimeString());
     return formattedTime;
 }
+// The function clears the table,
+// hides the previous icon, 
+// flushes the contents of the "temperature" pargraph,
+// hides the paragraph.
+
+function resetWeatherData() {
+    $("#weatherTableBody").empty();
+    delayMilliseconds = 0;
+    document.getElementById("weatherIcon").style.visibility = "hidden";
+    $("#temperature").empty();
+    $("#temperature").hide();
+
+}
 
 // Definiton of the displayLocation function.
 // The function accepts 5 arguments which will be embedded in a card.
 function displayLocation(locationName, countryCode, state, latitude, longitude) {
     //JQuery function selects the element with the given id and appends a card to it.
+
+    // Adding an onclick attribute with a functin call getWeather and passing two variables as arguments to display the specific parameters.
     $("#locationContainer").append($(`
 <div class="col">
     <div class="card h-100">
         <div class="card-body">
         <h5 class="card-title"><strong>${locationName}</strong></h5>
-        <p class="card-text">${countryCode} ${state}</br>${latitude}°</br>${longitude}°</p>
-        <a href="#" class="btn btn-primary">Pick the location.</a>
+        <p class="card-text">${state} ${countryCode}<br/></p>
       </div>
     </div>
 </div>
@@ -102,6 +116,7 @@ function displayLocation(locationName, countryCode, state, latitude, longitude) 
 //If the request is successful, log the parameters in the console.
 function getWeather(latitude, longitude) {
 
+    resetWeatherData();
 
     $.ajax({
         type: "GET",
@@ -136,14 +151,13 @@ function getWeather(latitude, longitude) {
             retriveWeatherIcon(apiResponse.weather[0].icon);
             displayTemperature(apiResponse.main.temp);
             //Introducing the local variable that takes the value of the TimeConverter function after it has executed.
-
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
         }
+
     });
 
 }
-
 
 
 function getCityName() {
@@ -163,10 +177,10 @@ function getCityName() {
 
             //Jquery function that flushes the error message.
             $("#noLocationsFoundError").empty();
-            
+
             if (apiResponseCityLookUp.length === 0) {
 
-             
+
                 $("#noLocationsFoundError").append($(`
                 <div class="col">
                     <div class="card h-100 text-bg-warning">
