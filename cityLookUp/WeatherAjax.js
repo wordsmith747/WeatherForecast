@@ -1,5 +1,5 @@
 // Definition of the registerButtonHandler function which calls getWeather function triggered by the "start" button.
-// Definition of JQuery function which calls getCityName function triggered by the "sumbit" button.
+// Definition of jQuery function which calls getCityName function triggered by the "sumbit" button.
 
 function registerButtonHandler() {
 
@@ -8,10 +8,14 @@ function registerButtonHandler() {
 
     // });
 
+    //jQuery triggers the function that creates the table.
+    //jQuery function triggers the table heading to show on click.
+
     $("#submit").on("click", function () {
         getCityName();
-
+        $("#table").show();
     });
+
 
 }
 
@@ -31,7 +35,7 @@ function insertPopulatedRow(weatherParameterName, weatherParameterValue, isLastI
     //If statement checking whether the inserted row is the last item in the collection.
     if (isLastItem) {
         $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000, function () {
-            //Jquery finds the button and disables it.
+            //jQuery finds the button and disables it.
             // $("#start").prop('disabled', true);
             document.getElementById("weatherIcon").style.visibility = "visible";
 
@@ -94,7 +98,7 @@ function resetWeatherData() {
 // Definiton of the displayLocation function.
 // The function accepts 5 arguments which will be embedded in a card.
 function displayLocation(locationName, countryCode, state, latitude, longitude) {
-    //JQuery function selects the element with the given id and appends a card to it.
+    //jQuery function selects the element with the given id and appends a card to it.
 
     // Adding an onclick attribute with a function call getWeather and passing two variables as arguments to display the specific parameters.
     $("#locationContainer").append($(`
@@ -175,9 +179,12 @@ function getCityName() {
 
             $("#locationContainer").hide();
 
-            //Jquery function that flushes the error message.
+            //jQuery function that flushes the error message.
             $("#noLocationsFoundError").empty();
 
+            //Condition checking if the array returned from the API call is empty or not.
+            //If the returned array is empty, the error message is displayed.
+            //If the returned array has at least one element it will be displayed in a card
             if (apiResponseCityLookUp.length === 0) {
 
 
@@ -201,9 +208,9 @@ function getCityName() {
 
                 //  Selects the element to switch its visibility off.
 
-                //Jquery function that clears the data of the previous API call.
+                //jQuery function that clears the data of the previous API call.
                 $("#locationContainer").empty();
-                //Jquery that applies some animation to the API response.
+                //jQuery that applies some animation to the API response.
                 $("#locationContainer").delay(100).fadeIn(2000);
 
                 //For loop displaying the paramaters based on the city names array.
