@@ -3,10 +3,10 @@
 
 function registerButtonHandler() {
 
-    $("#start").on("click", function () {
-        getWeather();
+    // $("#start").on("click", function () {
+    //     getWeather();
 
-    });
+    // });
 
     $("#submit").on("click", function () {
         getCityName();
@@ -100,11 +100,12 @@ function displayLocation(locationName, countryCode, state, latitude, longitude) 
 
 //Send GET request to a weather API.
 //If the request is successful, log the parameters in the console.
-function getWeather() {
+function getWeather(latitude, longitude) {
+
 
     $.ajax({
         type: "GET",
-        url: "https://api.openweathermap.org/data/2.5/weather?lat=48.8588897&lon=2.3200410217200766&units=metric&lang=pl&appid=13c1eb939d118a04132999b824983237",
+        url: `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=de&appid=13c1eb939d118a04132999b824983237`,
         success: function (apiResponse) {
             console.log(apiResponse);
 
