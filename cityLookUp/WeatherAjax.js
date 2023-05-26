@@ -103,6 +103,7 @@ function displayLocation(locationName, countryCode, state, latitude, longitude) 
         <div class="card-body">
         <h5 class="card-title"><strong>${locationName}</strong></h5>
         <p class="card-text">${state} ${countryCode}<br/></p>
+            <a onclick="getWeather(${latitude},${longitude});" href="#" class="btn btn-primary">Select ${locationName}, ${countryCode}</a>
       </div>
     </div>
 </div>
