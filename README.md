@@ -12,6 +12,9 @@
 ## Updated layout
 ![Weather_Table_C](sample-images/Weather_Table_Cards.png)
 
+## City look up API functionality
+![Weather_CityLookUp](sample-images/Weather_CityLookUp.png)
+
 ## WeatherAjaxForecast.js
 
 - The WeatherAjaxForecast retrives the temperature data collected every three hours in a given city. The temperature data is then assigned to the variables used by the Chart.js library in order to display them on a line chart. 
@@ -23,3 +26,4 @@
 - A dropdown list with the city names to retrive the weather parameters from.
 - A seperate API call to retrieve the weather parameters based on input city.
 - A functionality that enables the user to retrieve the weather parameter table based on city selected from the API response array.
+- A smooth scrolling feature with jQuery/JavaScript for improved UX.
