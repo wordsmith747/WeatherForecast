@@ -111,6 +111,11 @@ function resetWeatherData() {
 
 }
 
+// function scrollElement() {
+//     var element = document.getElementById("temperature");
+//     element.scrollIntoView();
+// }
+
 // Definiton of the displayLocation function.
 // The function accepts 5 arguments which will be embedded in a card.
 function displayLocation(locationName, countryCode, state, latitude, longitude) {
@@ -145,7 +150,7 @@ function getWeather(latitude, longitude) {
             console.log(apiResponse);
 
             //Retrieve weather parameters from the API response and display them next to their respective descriptive names.
-
+            insertPopulatedRow("Name", apiResponse.name);
             insertPopulatedRow("Temperature", apiResponse.main.temp);
             //insertPopulatedRow("wind gust", apiResponse.wind.gust);
             insertPopulatedRow("Perceived temperature", apiResponse.main.feels_like);
@@ -169,7 +174,9 @@ function getWeather(latitude, longitude) {
             insertPopulatedRow("Sunset", formattedSunsetTime, true);
 
             retriveWeatherIcon(apiResponse.weather[0].icon);
+        
             displayTemperature(apiResponse.main.temp);
+            
             //Introducing the local variable that takes the value of the TimeConverter function after it has executed.
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
