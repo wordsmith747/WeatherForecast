@@ -14,10 +14,26 @@ function registerButtonHandler() {
     $("#submit").on("click", function () {
         getCityName();
         $("#table").show();
+
     });
 
-
 }
+
+document.addEventListener('keydown', (event) => {
+    console.log(event.key);
+    console.log(event.code);
+
+    // If the user presses the Enter key the main functions are run just as if the user clicked the "Submit" button.
+    // If the user presses another key a message is logged in the console.
+    if (event.code === "Enter") {
+
+        // Run a function triggered the same way as the .on() function on "submit" button.
+        getCityName();
+        $("#table").show();
+    } else {
+        console.log("Press the Enter key!");
+    }
+});
 
 
 let delayMilliseconds = 1000;
