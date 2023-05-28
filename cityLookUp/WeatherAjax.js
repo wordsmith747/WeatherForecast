@@ -150,7 +150,7 @@ function getWeather(latitude, longitude) {
             console.log(apiResponse);
 
             //Retrieve weather parameters from the API response and display them next to their respective descriptive names.
-
+            insertPopulatedRow("Name", apiResponse.name);
             insertPopulatedRow("Temperature", apiResponse.main.temp);
             //insertPopulatedRow("wind gust", apiResponse.wind.gust);
             insertPopulatedRow("Perceived temperature", apiResponse.main.feels_like);
