@@ -13,6 +13,12 @@
 ![Weather_Table_C](sample-images/Weather_Table_Cards.png)
 
 ## City look up API functionality
+
+- The user types in the city name they want to look up in the textbox and clicks the "Submit" button. It triggers an API call which returns an object with parameters for the city provided.
+- The user selects one of the cities returned and clicks a button to display the weather parameters in a given city.
+- The API call returns the parameters which are inserted into a table.
+- Once the table is complete, the icon representing the weather pops up and the rounded temperature value smoothly fades in.
+
 ![Weather_CityLookUp](sample-images/Weather_CityLookUp.png)
 
 ## WeatherAjaxForecast.js
