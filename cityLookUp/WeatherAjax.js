@@ -77,7 +77,9 @@ function displayTemperature(locationTemperature) {
     $("#temperature").append(`${temperatureRounded}°C`);
     // document.getElementById("temperature").style.visibility = "visible";
     // $("#weatherTableBody").children().last().delay(delayMilliseconds).fadeIn(2000);
-    $("#temperature").delay(delayMilliseconds + 2000).fadeIn(2000);
+
+    // Introducing delayed animation and passing a callback function as a parameter to smoothly scroll the page to the temperature value element.
+    $("#temperature").delay(delayMilliseconds + 2000).fadeIn(2000, function () { scrollElement(); });
 }
 // Definition of the TimeConverter function.
 // The function converts the time expressed in seconds into a user friendly format.
@@ -111,10 +113,10 @@ function resetWeatherData() {
 
 }
 
-// function scrollElement() {
-//     var element = document.getElementById("temperature");
-//     element.scrollIntoView();
-// }
+function scrollElement() {
+    var element = document.getElementById("temperature");
+    element.scrollIntoView();
+}
 
 // Definiton of the displayLocation function.
 // The function accepts 5 arguments which will be embedded in a card.
@@ -174,9 +176,9 @@ function getWeather(latitude, longitude) {
             insertPopulatedRow("Sunset", formattedSunsetTime, true);
 
             retriveWeatherIcon(apiResponse.weather[0].icon);
-        
+
             displayTemperature(apiResponse.main.temp);
-            
+
             //Introducing the local variable that takes the value of the TimeConverter function after it has executed.
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
