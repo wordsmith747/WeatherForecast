@@ -34,3 +34,4 @@
 - A functionality that enables the user to retrieve the weather parameter table based on city selected from the API response array.
 - A smooth scrolling feature with jQuery/JavaScript for improved UX.
 - Bootstrap enhanced layout.
+- Connecting the city look up feature with the chart feature.
