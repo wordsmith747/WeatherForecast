@@ -186,6 +186,8 @@ function getWeather(latitude, longitude) {
 
     });
 
+
+    getTemparatureForecast(latitude, longitude);
 }
 
 
@@ -250,6 +252,19 @@ function getCityName() {
                 }
             }
         }
+    });
+
+}
+
+function getTemparatureForecast(latitude, longitude) {
+
+    $.ajax({
+        type: "GET",
+        url: `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=13c1eb939d118a04132999b824983237`,
+        success: function (apiForecastParameters) {
+            console.log(apiForecastParameters);
+        }
+
     });
 
 }
