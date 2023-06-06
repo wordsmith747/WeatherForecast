@@ -302,13 +302,16 @@ function getTemparatureForecast(latitudeValue, longitudeValue, locationName) {
                             type: 'time',
                         }]
                     }
+
                 },
                 data: {
                     labels: arrayOfDates,
                     datasets: [{
                         label: locationName,
                         data: datesAndTemperatures,
-                        borderWidth: 1
+                        borderWidth: 1,
+                        backgroundColor:'rgba(74, 227, 32, 0.2)',
+                        borderColor: 'rgba(18, 71, 9, 1)'
                     }]
                 }
             });
