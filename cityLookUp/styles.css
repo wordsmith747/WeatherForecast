@@ -14,8 +14,16 @@
 #temperature {
    display: none;
    text-decoration: solid;
-   color:rgb(98, 226, 43);
+   color: rgb(98, 226, 43);
    font-size: xxx-large;
+}
+
+
+/*Updating canvas element style for better UX*/
+.chart-container {
+   position: relative;
+   height: 40vh;
+   width: 80vw
 }
 
 /*visibility: hidden;*/
