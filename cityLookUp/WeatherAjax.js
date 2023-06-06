@@ -153,14 +153,14 @@ function getWeather(latitude, longitude) {
             console.log(apiResponse);
 
             //Retrieve weather parameters from the API response and display them next to their respective descriptive names.
-            insertPopulatedRow("Name", apiResponse.name);
+            insertPopulatedRow("Location", apiResponse.name);
             insertPopulatedRow("Temperature", apiResponse.main.temp);
             //insertPopulatedRow("wind gust", apiResponse.wind.gust);
             insertPopulatedRow("Perceived temperature", apiResponse.main.feels_like);
             insertPopulatedRow("Wind speed", apiResponse.wind.speed);
 
             insertPopulatedRow("Country", apiResponse.sys.country);
-            insertPopulatedRow("Location", apiResponse.name);
+
             insertPopulatedRow("Latitude", apiResponse.coord.lat + "°");
             insertPopulatedRow("Longitude", apiResponse.coord.lon + "°")
             // insertPopulatedRow("id", apiResponse.sys.id);
@@ -293,8 +293,7 @@ function getTemparatureForecast(latitudeValue, longitudeValue, locationName) {
             console.log(datesAndTemperatures);
 
             var ctx = document.getElementById("examChart").getContext("2d");
-
-            var myChart = new Chart(ctx, {
+            var chartSettings = {
                 type: 'line',
                 options: {
                     scales: {
@@ -310,11 +309,16 @@ function getTemparatureForecast(latitudeValue, longitudeValue, locationName) {
                         label: locationName,
                         data: datesAndTemperatures,
                         borderWidth: 1,
-                        backgroundColor:'rgba(74, 227, 32, 0.2)',
-                        borderColor: 'rgba(18, 71, 9, 1)'
+                        backgroundColor: 'rgba(74, 227, 32, 0.2)',
+                        borderColor: 'rgba(18, 71, 9, 1)',
+                        pointBackgroundColor: 'rgba(29, 32, 209, 1)'
                     }]
                 }
-            });
+            };
+            console.log(JSON.stringify(chartSettings));
+
+            var myChart = new Chart(ctx, chartSettings);
+
         }
     });
 
