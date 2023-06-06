@@ -17,6 +17,7 @@ function registerButtonHandler() {
 
     });
 
+
 }
 
 document.addEventListener('keydown', (event) => {
@@ -182,9 +183,15 @@ function getWeather(latitude, longitude) {
             //Introducing the local variable that takes the value of the TimeConverter function after it has executed.
             //retriveWeatherIcon("10" + "d");
             //document.getElementById("weatherIcon").style.visibility = "visible";
+            getTemparatureForecast(latitude, longitude, apiResponse.name);
+
         }
 
     });
+
+
+    //console.log(locationName);
+    // Calling the function at the end of the getWeather function execution.
 
 }
 
@@ -254,3 +261,58 @@ function getCityName() {
 
 }
 
+// The function will retrieve the parameters that will be used to build the temperature chart.
+function getTemparatureForecast(latitudeValue, longitudeValue, locationName) {
+
+
+    $.ajax({
+        type: "GET",
+        url: `https://api.openweathermap.org/data/2.5/forecast?lat=${latitudeValue}&lon=${longitudeValue}&units=metric&appid=13c1eb939d118a04132999b824983237`,
+        success: function (apiForecastParameter) {
+            //Loop through the response Object to extract the temperature
+            console.log(apiForecastParameter);
+
+
+            let arrayOfDates = [];
+            let temperatures = [];
+            let datesAndTemperatures = [];
+
+            for (let index = 0; index < apiForecastParameter.list.length; index++) {
+
+                arrayOfDates.push(apiForecastParameter.list[index].dt_txt)
+                temperatures.push(apiForecastParameter.list[index].main.temp);
+                let dateAndTemperature = {
+
+                    t: apiForecastParameter.list[index].dt_txt,
+                    y: apiForecastParameter.list[index].main.temp
+                };
+                datesAndTemperatures.push(dateAndTemperature);
+            }
+            console.log(arrayOfDates);
+            console.log(temperatures);
+            console.log(datesAndTemperatures);
+
+            var ctx = document.getElementById("examChart").getContext("2d");
+
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                options: {
+                    scales: {
+                        xAxes: [{
+                            type: 'time',
+                        }]
+                    }
+                },
+                data: {
+                    labels: arrayOfDates,
+                    datasets: [{
+                        label: locationName,
+                        data: datesAndTemperatures,
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+    });
+
+}
