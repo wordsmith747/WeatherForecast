@@ -36,4 +36,4 @@
 - Bootstrap enhanced layout.
 - Connecting the city look up feature with the chart feature.
 
-![WeatherForecast-cityLookUp](sample-images\WeatherForecast-cityLookUp.png)
+![WeatherForecast-cityLookUp](sample-images\Weather_CityLookUp.png)
