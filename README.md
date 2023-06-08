@@ -32,6 +32,8 @@
 
 - The table feature along with the city look up feature combinend with the functionality of 
 Chart.js library!
+- The following screenshot showcases the final outcome of running the app. The user types in the city name, selects the desired one from the response, generates the table of weather paramters and creates the chart showing temperature fluctuations!
+
 ![WeatherForecast-cityLookUp](sample-images/WeatherForecast-cityLookUp.png)
 
 ## Future features
