@@ -28,6 +28,12 @@
 
 ![Weather_Chart_C](https://user-images.githubusercontent.com/89709407/236700458-5de5355f-6bd8-46e3-b88f-b8b00ea2d903.png)
 
+## WeatherAjaxForecast.js
+
+- The table feature along with the city look up feature combinend with the functionality of 
+Chart.js library!
+![WeatherForecast-cityLookUp](sample-images/WeatherForecast-cityLookUp.png)
+
 ## Future features
 - A dropdown list with the city names to retrive the weather parameters from.
 - A seperate API call to retrieve the weather parameters based on input city.
@@ -36,4 +42,3 @@
 - Bootstrap enhanced layout.
 - Connecting the city look up feature with the chart feature.
 
-![WeatherForecast-cityLookUp](sample-images/WeatherForecast-cityLookUp.png)
