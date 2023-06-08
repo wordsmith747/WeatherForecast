@@ -35,3 +35,5 @@
 - A smooth scrolling feature with jQuery/JavaScript for improved UX.
 - Bootstrap enhanced layout.
 - Connecting the city look up feature with the chart feature.
+
+![WeatherForecast-cityLookUp](sample-images\WeatherForecast-cityLookUp.png)
